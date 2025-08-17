@@ -27,6 +27,13 @@ def apresentacao_menus():
     print('4. Sair')
 
 
+def opcao_invalida():
+    print('Opção indevida.')
+    print('Voltando ao menu principal.')
+    os.system('sleep 2')
+    main()
+
+
 def finalizar_app():
     """ Função de encerramento"""
     os.system('clear')
@@ -35,19 +42,24 @@ def finalizar_app():
 
 def menu_opcoes(valor):
     """ Menu de opções """
-    if (valor == 1):
-        print('Cadastrar Restaurante')
-    elif (valor == 2):
-        print('Listar os Restaurantes')
-    elif (valor == 3):
-        print('Ativar Restaurante')
-    elif (valor == 4):
-        finalizar_app()
-    else:
-        print('Opção indevida. Encerrando o programa')
+    try:
+        match valor:
+            case 1:
+                print('Cadastrar Restaurante')
+            case 2:
+                print('Listar os Restaurantes')
+            case 3:
+                print('Ativar Restaurante')
+            case 4:
+                finalizar_app()
+            case _:
+                opcao_invalida()
+    except ValueError:
+        opcao_invalida()
 
 
 def main():
+    os.system('clear')
     apresentacao_principal()
     apresentacao_menus()
     menu_opcoes(int(input('Escolha uma opção: ')))
