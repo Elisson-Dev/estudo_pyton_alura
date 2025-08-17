@@ -1,11 +1,14 @@
 """
 Projeto de Estudo de caso para prática de Python no curso da Alura.
+@project_name: App Sabor Caseiro da Mamãe
 @date: 2025/08/16
 @type: nano project
 @author: elss
 """
 
 import os
+
+restaurantes = []
 
 
 def apresentacao_principal():
@@ -27,7 +30,29 @@ def apresentacao_menus():
     print('4. Sair')
 
 
+def cadastro_novo_restaurante():
+    """ Cadastranto Unidades de Restaurante """
+    os.system('clear')
+    print('Cadastro de novo restaurante.')
+    nome_restaurante = input('Nome do restaurante a cadastrar: ')
+    restaurantes.append(nome_restaurante)
+    print(restaurantes)
+    voltar_ao_menu_anterior()
+
+
+def listar_restaurantes():
+    """ Listar os Restaurantes Cadastrados """
+    print('Lista de Restaurantes: \n')
+    j = 0
+    for i in restaurantes:
+        j = j+1
+        print(f'{j} - {i}')
+    print('\n')
+    voltar_ao_menu_anterior()
+
+
 def opcao_invalida():
+    """ Quando uma Opção for inválida """
     print('Opção indevida.')
     print('Voltando ao menu principal.')
     os.system('sleep 2')
@@ -45,9 +70,13 @@ def menu_opcoes(valor):
     try:
         match valor:
             case 1:
-                print('Cadastrar Restaurante')
+                print('Iremos Cadastrar Restaurante')
+                os.system('sleep 1')
+                cadastro_novo_restaurante()
             case 2:
-                print('Listar os Restaurantes')
+                print('Iremos listar os Restaurantes')
+                os.system('sleep 3')
+                listar_restaurantes()
             case 3:
                 print('Ativar Restaurante')
             case 4:
@@ -59,10 +88,18 @@ def menu_opcoes(valor):
 
 
 def main():
+    """ Função principal Main() """
     os.system('clear')
     apresentacao_principal()
     apresentacao_menus()
     menu_opcoes(int(input('Escolha uma opção: ')))
+
+
+def voltar_ao_menu_anterior():
+    """ Retorna ao menu principal """
+    print('Retornando ao menu anterior. Aguarde...')
+    os.system('sleep 2')
+    main()
 
 
 if __name__ == '__main__':
