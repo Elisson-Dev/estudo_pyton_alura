@@ -8,7 +8,9 @@ Projeto de Estudo de caso para prática de Python no curso da Alura.
 
 import os
 
-restaurantes = []
+restaurantes = [{'nome': 'Pizza Zé', 'categoria': 'Italiana', 'ativo': False},
+                {'nome': 'Casa Lulu', 'categoria': 'Brasileira', 'ativo': True}
+                ]
 
 
 def apresentacao_principal():
@@ -32,8 +34,7 @@ def apresentacao_menus():
 
 def cadastro_novo_restaurante():
     """ Cadastranto Unidades de Restaurante """
-    os.system('clear')
-    print('Cadastro de novo restaurante.')
+    cabecalho_de_funcoes('Cadastrar')
     nome_restaurante = input('Nome do restaurante a cadastrar: ')
     restaurantes.append(nome_restaurante)
     print(restaurantes)
@@ -42,7 +43,7 @@ def cadastro_novo_restaurante():
 
 def listar_restaurantes():
     """ Listar os Restaurantes Cadastrados """
-    print('Lista de Restaurantes: \n')
+    cabecalho_de_funcoes('Listar')
     j = 0
     for i in restaurantes:
         j = j+1
@@ -61,8 +62,7 @@ def opcao_invalida():
 
 def finalizar_app():
     """ Função de encerramento"""
-    os.system('clear')
-    print('Obrigado por escolher nossa empresa.')
+    cabecalho_de_funcoes('Finalizar o App')
 
 
 def menu_opcoes(valor):
@@ -100,6 +100,12 @@ def voltar_ao_menu_anterior():
     print('Retornando ao menu anterior. Aguarde...')
     os.system('sleep 2')
     main()
+
+
+def cabecalho_de_funcoes(frase):
+    """ Inserção de mensagens de cabeçalho de opções """
+    os.system('clear')
+    print(f'{frase} - Restaurante.')
 
 
 if __name__ == '__main__':
