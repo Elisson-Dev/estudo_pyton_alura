@@ -51,7 +51,9 @@ def listar_restaurantes():
     j = 0
     for i in restaurantes:
         j = j+1
-        print(f'{j}-{i['nome']}-TIPO: {i['categoria']} - Aberto: {i['ativo']}')
+        ativado = 'Em Funcionamento' if i['ativo'] else 'Fechado'
+        print(f'{j}-{i['nome']}-TIPO: {i['categoria']} - Está: {ativado}')
+        print('*' * (len(i['nome'])+2))
     print('\n')
     voltar_ao_menu_anterior()
 
@@ -112,6 +114,7 @@ def alterne_estado_restaurante():
     """ Mudar condição de True <-> False """
     cabecalho_de_funcoes('Alternando Estado')
     nome_resturante = input('Qual o restaurante deseja mudar o estado? ')
+    verificador = False
     for i in restaurantes:
         if i['nome'] == nome_resturante:
             if i['ativo'] is True:
@@ -122,6 +125,9 @@ def alterne_estado_restaurante():
                 print('Agora o Restaurante está Ativo.')
                 os.system('sleep 2')
             break
+    if not verificador:
+        print('Restaurante não encontrada')
+        os.system('sleep 1')
     voltar_ao_menu_anterior()
 
 
