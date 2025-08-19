@@ -16,7 +16,9 @@ restaurantes = [{'nome': 'Pizza Zé', 'categoria': 'Italiana', 'ativo': False},
 
 
 def apresentacao_principal():
-    """ Abertura do programa """
+    """ Abertura do programa
+        Apresenta o nome do aplicativo.
+    """
     print("""
 ╭━━━╮╱╱╭╮╱╱╱╱╱╱╱╭━━━╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╱╭━╮╭━╮
 ┃╭━╮┃╱╱┃┃╱╱╱╱╱╱╱┃╭━╮┃╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱┃┃╱╱╱┃┃╰╯┃┃
@@ -27,7 +29,9 @@ def apresentacao_principal():
 
 
 def apresentacao_menus():
-    """ Apresentando o menu principal """
+    """ Apresentando o menu principal
+        Apenas listará as opções de menu.
+    """
     print('1. Cadastrar restaurante')
     print('2. Listar restaurante')
     print('3. Ativar restaurante')
@@ -35,7 +39,12 @@ def apresentacao_menus():
 
 
 def cadastro_novo_restaurante():
-    """ Cadastranto Unidades de Restaurante """
+    """ Cadastranto Unidades de Restaurante
+
+        input:
+            - Nome do Restaurante
+            - Classificação do Restaurante
+    """
     cabecalho_de_funcoes('Cadastrar')
     nome_restaurante = input('Nome do restaurante a cadastrar: ')
     tipo_restaurante = input('Tipo do restaurante a cadastrar: ')
@@ -46,7 +55,10 @@ def cadastro_novo_restaurante():
 
 
 def listar_restaurantes():
-    """ Listar os Restaurantes Cadastrados """
+    """ Listar os Restaurantes Cadastrados
+        Outputs:
+        - Lista todos os valores contidos no vetor Restaurante
+    """
     cabecalho_de_funcoes('Listar')
     j = 0
     for i in restaurantes:
@@ -59,7 +71,11 @@ def listar_restaurantes():
 
 
 def opcao_invalida():
-    """ Quando uma Opção for inválida """
+    """ Quando uma Opção for inválida
+
+        Outputs:
+            - Retorna uma mensagem quando identificada um erro de valor
+    """
     print('Opção indevida.')
     print('Voltando ao menu principal.')
     os.system('sleep 2')
@@ -67,12 +83,26 @@ def opcao_invalida():
 
 
 def finalizar_app():
-    """ Função de encerramento"""
+    """ Função de encerramento
+        Outputs:
+            - Comunica encerramento do aplicativo
+    """
     cabecalho_de_funcoes('Finalizar o App')
 
 
 def menu_opcoes(valor):
-    """ Menu de opções """
+    """ Menu de opções
+        Inputs:
+            - "valor" inserido na escolha dos menus apresentado em apresentacao_menu()
+
+        Outputs:
+            - Comunicado da ação
+            - Possíbilidade de Menssagem de erro
+
+        Métodos:
+            - cadastro_novo_restaurante()
+            - opcao_invalida()
+    """
     try:
         match valor:
             case 1:
@@ -96,7 +126,13 @@ def menu_opcoes(valor):
 
 
 def main():
-    """ Função principal Main() """
+    """ Função principal Main()
+    Métodos:
+            - apresentacao_principal()
+            - apresentacao_menus()
+            - apresentacao_principal()
+            - menu_opcoes()
+    """
     os.system('clear')
     apresentacao_principal()
     apresentacao_menus()
